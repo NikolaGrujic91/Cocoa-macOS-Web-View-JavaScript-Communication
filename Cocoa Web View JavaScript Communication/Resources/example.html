@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="button" onclick="callNativeFromJavaScript()" value="JavaScript to WKWebView">
+        <br>
+        <div id='messageFromNative'></div>
+    </body>
+    <script>
+        function callNativeFromJavaScript()
+        {
+            window.webkit.messageHandlers.interOp.postMessage("Hello from JavaScript!");
+        }
+
+        function callJavaScriptFromNative(message)
+        {
+            var data = String(message);
+            console.log(data);
+            document.getElementById('messageFromNative').innerText = data;
+        }
+    </script>
+</html> 
